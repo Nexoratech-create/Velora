@@ -20,21 +20,3 @@
 * **Icons & UI:** Lucide React / Heroicons
 * **Deployment:** Vercel / Netlify
 
----
-
-## 🚀 Live Demo
-🌐 **Live Preview:** [View Velora Live App](#) *(apni Vercel/Netlify link yahan paste karein)*
-
----
-
-## 📂 Project Structure
-```text
-velora-ecommerce/
-│
-├── public/          # Assets, icons, and static images
-├── src/
-│   ├── components/  # Reusable UI components (Navbar, ProductCard, Cart, etc.)
-│   ├── pages/       # Home, Shop, Product Detail pages
-│   ├── styles/      # Global CSS and Tailwind configs
-│   └── App.tsx      # Main application entry
-└── package.json
