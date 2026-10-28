@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VELORA — Everyday Essentials. Elevated.</title>
+
+    <!-- Google Fonts for Editorial Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        COMPLIMENTARY EXPRESS WORLDWIDE SHIPPING ON ORDERS OVER $250 &nbsp;|&nbsp; USE CODE <strong>VELORA10</strong> FOR 10% OFF
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="brand-logo" onclick="navigateTo('home')">VELORA</div>
+            <nav class="nav-links" id="nav-menu">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="shop">Shop All</a>
+                <a href="#" class="nav-link" data-page="handbags">Handbags</a>
+                <a href="#" class="nav-link" data-page="accessories">Accessories</a>
+                <a href="#" class="nav-link" data-page="about">Our Story</a>
+                <a href="#" class="nav-link" data-page="contact">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" id="search-toggle-btn" title="Search"><i data-lucide="search"></i></button>
+                <button class="icon-btn" id="wishlist-btn" title="Wishlist">
+                    <i data-lucide="heart"></i>
+                    <span class="badge" id="wishlist-badge">0</span>
+                </button>
+                <button class="icon-btn" id="cart-btn" title="Cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar Overlay -->
+        <div class="search-overlay" id="search-overlay">
+            <div class="search-container">
+                <i data-lucide="search"></i>
+                <input type="text" id="search-input" placeholder="Search handcrafted bags, silk scarves, jewelry..." />
+                <button id="close-search-btn"><i data-lucide="x"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-content">
+
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-view active">
+            <!-- Hero Banner (Matching Velora Reference Image) -->
+            <div class="hero-wrapper">
+                <div class="hero-card">
+                    <div class="hero-image-box">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=1200" alt="Velora Leather Bag & Accessories Collection" />
+                        <span class="hero-tag">preciosabym</span>
+                    </div>
+                    <div class="hero-content">
+                        <span class="section-subtitle">THE NEW COLLECTION</span>
+                        <h1 class="hero-title">Everyday essentials.<br/>Elevated.</h1>
+                        <p class="hero-description">Timeless pieces. Thoughtfully chosen. Made for your everyday.</p>
+                        <button class="btn btn-primary" onclick="navigateTo('shop')">EXPLORE COLLECTION</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Cards -->
+            <section class="container section-padding">
+                <div class="section-header center">
+                    <span class="section-subtitle">CURATED CATEGORIES</span>
+                    <h2>Designed to Endure</h2>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" onclick="filterByCategory('Handbags')">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=600" alt="Handbags"/>
+                        <div class="category-overlay">
+                            <h3>Leather Handbags</h3>
+                            <span>Explore 14 Items &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Silk Scarves')">
+                        <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&q=80&w=600" alt="Silk Scarves"/>
+                        <div class="category-overlay">
+                            <h3>Silk Scarves</h3>
+                            <span>Explore 8 Items &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Jewelry')">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600" alt="Jewelry"/>
+                        <div class="category-overlay">
+                            <h3>Fine Jewelry</h3>
+                            <span>Explore 10 Items &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="container section-padding">
+                <div class="section-header flex-between">
+                    <div>
+                        <span class="section-subtitle">THE ESSENTIAL EDIT</span>
+                        <h2>Most Coveted Pieces</h2>
+                    </div>
+                    <button class="btn btn-outline" onclick="navigateTo('shop')">View All Products</button>
+                </div>
+                <div class="product-grid" id="featured-product-grid"></div>
+            </section>
+
+            <!-- Craftsmanship Editorial -->
+            <section class="editorial-banner">
+                <div class="editorial-grid">
+                    <div class="editorial-image">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800" alt="Handcrafting process" />
+                    </div>
+                    <div class="editorial-text">
+                        <span class="section-subtitle">THE VELORA STANDARD</span>
+                        <h2>Uncompromising Quality & Conscious Design</h2>
+                        <p>Every Velora handbag and accessory is designed in our studio and crafted by master artisans using full-grain Italian leather and sustainable silk textiles. Built to last a lifetime, evolving gracefully with wear.</p>
+                        <div class="values-list">
+                            <div class="value-item">
+                                <h4>100% Sustainable Leather</h4>
+                                <p>Ethically sourced vegetable-tanned full grain leather.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Artisanal Craftsmanship</h4>
+                                <p>Hand-stitched detailing with 24k gold-plated brass hardware.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- SHOP PAGE -->
+        <section id="page-shop" class="page-view">
+            <div class="container section-padding">
+                <div class="shop-header">
+                    <h1>The Collection</h1>
+                    <p>Discover minimalist luxury essentials crafted for modern living.</p>
+                </div>
+
+                <div class="shop-layout">
+                    <!-- Filters Sidebar -->
+                    <aside class="shop-sidebar">
+                        <div class="filter-group">
+                            <h3>Categories</h3>
+                            <ul class="filter-list" id="category-filters">
+                                <li class="active" data-cat="all">All Products</li>
+                                <li data-cat="Handbags">Handbags</li>
+                                <li data-cat="Silk Scarves">Silk Scarves</li>
+                                <li data-cat="Jewelry">Jewelry</li>
+                                <li data-cat="Accessories">Accessories</li>
+                            </ul>
+                        </div>
+                        <div class="filter-group">
+                            <h3>Max Price (<span id="price-val">$600</span>)</h3>
+                            <input type="range" id="price-range" min="50" max="600" step="10" value="600" />
+                        </div>
+                    </aside>
+
+                    <!-- Catalog Main Grid -->
+                    <div class="shop-main">
+                        <div class="catalog-toolbar">
+                            <span id="product-count-text">Showing all items</span>
+                            <div class="sort-wrapper">
+                                <label for="sort-select">Sort by:</label>
+                                <select id="sort-select">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="product-grid" id="shop-product-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / OUR STORY PAGE -->
+        <section id="page-about" class="page-view">
+            <div class="container section-padding narrow">
+                <div class="text-center">
+                    <span class="section-subtitle">OUR PHILOSOPHY</span>
+                    <h1 class="page-title">Refined Simplicity for the Modern World</h1>
+                </div>
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000" alt="Velora Atelier" class="full-img rounded margin-y"/>
+                <div class="editorial-body">
+                    <p>Founded on the belief that luxury should be defined by quiet elegance and meticulous craftsmanship rather than loud logos, VELORA creates everyday essentials designed to elevate your personal style.</p>
+                    <p>Our pieces are designed for longevity, using only responsibly sourced leather from gold-certified tanneries in Tuscany and silk spun with zero-waste practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="page-contact" class="page-view">
+            <div class="container section-padding narrow">
+                <div class="text-center">
+                    <span class="section-subtitle">GET IN TOUCH</span>
+                    <h1 class="page-title">Velora Concierge</h1>
+                    <p>Have questions about sizing, care, or custom orders? Our team is at your service.</p>
+                </div>
+
+                <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" required placeholder="Jane" />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" required placeholder="Doe" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required placeholder="jane@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" required placeholder="How can we assist you today?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">SEND MESSAGE</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Slide-out Shopping Cart Drawer -->
+    <div class="drawer-overlay" id="cart-drawer-overlay">
+        <div class="drawer">
+            <div class="drawer-header">
+                <h3>Shopping Bag (<span id="cart-item-count">0</span>)</h3>
+                <button class="icon-btn" id="close-cart-btn"><i data-lucide="x"></i></button>
+            </div>
+            
+            <div class="shipping-progress">
+                <p id="shipping-progress-text">Add $100.00 more to qualify for <strong>FREE EXPRESS SHIPPING</strong></p>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="shipping-progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="drawer-body" id="cart-items-container">
+                <!-- Dynamic Cart Items Rendered Here -->
+            </div>
+
+            <div class="drawer-footer">
+                <div class="coupon-box">
+                    <input type="text" id="coupon-input" placeholder="Promo Code (e.g. VELORA10)" />
+                    <button class="btn btn-sm btn-outline" id="apply-coupon-btn">Apply</button>
+                </div>
+                <div class="price-summary">
+                    <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+                    <div class="summary-row" id="discount-row" style="display:none; color: #8C6D46;">
+                        <span>Discount (10%)</span><span id="cart-discount">-$0.00</span>
+                    </div>
+                    <div class="summary-row"><span>Shipping</span><span id="cart-shipping">Calculated at Checkout</span></div>
+                    <div class="summary-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+                </div>
+                <button class="btn btn-primary btn-block" id="checkout-btn" onclick="startCheckout()">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-out Wishlist Drawer -->
+    <div class="drawer-overlay" id="wishlist-drawer-overlay">
+        <div class="drawer">
+            <div class="drawer-header">
+                <h3>Saved Wishlist</h3>
+                <button class="icon-btn" id="close-wishlist-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="drawer-body" id="wishlist-items-container"></div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal-overlay" id="product-modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" id="close-modal-btn"><i data-lucide="x"></i></button>
+            <div class="modal-body" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal Simulation -->
+    <div class="modal-overlay" id="checkout-modal-overlay">
+        <div class="modal-card checkout-modal">
+            <button class="modal-close" onclick="closeCheckout()"><i data-lucide="x"></i></button>
+            <div class="checkout-header">
+                <h2>VELORA Checkout</h2>
+                <div class="checkout-steps">
+                    <span class="step active" id="step-dot-1">1. Shipping</span> &rarr;
+                    <span class="step" id="step-dot-2">2. Payment</span> &rarr;
+                    <span class="step" id="step-dot-3">3. Confirmation</span>
+                </div>
+            </div>
+            <div class="checkout-body" id="checkout-step-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">VELORA</div>
+                    <p>Everyday essentials. Elevated.<br/>Crafted with intention and timeless precision.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>SHOP</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('shop')">All Collections</a></li>
+                        <li><a href="#" onclick="filterByCategory('Handbags')">Handbags</a></li>
+                        <li><a href="#" onclick="filterByCategory('Silk Scarves')">Silk Scarves</a></li>
+                        <li><a href="#" onclick="filterByCategory('Jewelry')">Fine Jewelry</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>CLIENT CARE</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('contact')">Concierge</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Product Care Guide</a></li>
+                        <li><a href="#">Warranty Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>NEWSLETTER</h4>
+                    <p>Receive exclusive early access to capsule collections.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Velora.');">
+                        <input type="email" placeholder="Enter your email" required />
+                        <button type="submit" class="btn btn-primary">JOIN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VELORA Luxury Goods Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
